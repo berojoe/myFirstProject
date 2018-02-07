@@ -1,0 +1,525 @@
+body {
+  background: #464646;
+  padding: 2% 0;
+}
+
+a {
+  text-decoration: none;
+  color: #a8a8a8;
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  background: #030202;
+  font-size: 18px;
+  line-height: 1.8em;
+  box-shadow: 4px 15px 20px #2a2a2a;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Loader
+_________________________________________________ */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //background: #000;
+  transition: 2s ;
+}
+
+.preloader:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #030202;
+  transition: 2s ;
+}
+
+.preloader.complete:before {
+  left: -50%;
+}
+
+.preloader:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #9b0000;
+  transition: 2s;
+}
+
+.preloader.complete:after {
+  right: -50%;
+}
+/* _________________________________________________ */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #000;
+  animation: animate 2s linear infinite;
+  z-index: 2;
+}
+
+.loader:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  animation: animateBg 2s linear infinite;
+}
+
+
+.preloader.complete {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(180deg);
+    background: #ff0000;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    background: #ff0000;
+  }
+}
+
+@keyframes animateBg {
+  0% {
+    height: 0;
+  }
+  25% {
+    height: 100%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 0;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+/* Header
+_________________________________________________ */
+.section-header {
+  color: #9b0000;
+  font-family: "Permanent Marker", sans-serif;
+}
+
+.header-left {
+  float: left;
+  width: 45%;
+  margin: 2% 0 0 3%;
+}
+
+.header-left h1 {
+  letter-spacing: 0.5em;
+  font-size: 44px;
+  margin: 0;
+}
+
+.header-left h5 {
+  font-size: 31px;
+  margin: 0;
+}
+
+/* Social icons
+_________________________________________________ */
+.header-right {
+  float: right;
+  width: 45%;
+}
+
+.header-right ul {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: -42%;
+}
+
+.header-right ul li {
+  float: left;
+  list-style: none;
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  background: #030202;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  font-size: 36px;
+  z-index: 1;
+  transition: .5s ease-in-out;
+  animation: floatin 3s;
+}
+
+@keyframes floatin {
+  0% {right: -550px;}
+  100% {right: 0;}
+}
+
+.header-right ul li:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background: #ccc;
+  z-index: -1;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: .3s ease-in-out;
+}
+
+.header-right ul li:after {
+  content: '';
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: -100%;
+  top: 0;
+  background: rgba(255,255,255,0.3);
+  transition: .5s ease-in-out;
+}
+
+.header-right ul li:hover:before {
+  left: 0;
+  transform: scale(1);
+}
+
+.header-right ul li:hover:after {
+  right: 0;
+}
+
+.header-right ul li:nth-child(1):before {
+  background: #1DA1F2;
+}
+
+.header-right ul li:nth-child(2):before {
+  background: #DB4437;
+}
+
+.header-right ul li .fa {
+  transition: .3s ease-in-out;
+}
+
+.header-right ul li:hover .fa {
+  color: #fff;
+}
+
+.clr {
+  clear: both;
+}
+
+/* Showcase
+_________________________________________________ */
+.grid {
+  display: grid;
+  padding: 3% 0;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  grid-template-areas:
+  "main main main main main main main"
+  "soon soon soon soon soon soon soon "
+  "done done done done done done done"
+  ". . plan plan plan . ."
+  "responsive responsive responsive . time time time"
+  "display display display . proto proto proto";
+}
+
+.section-main {
+  grid-area: main;
+  background: #030202;
+  margin: 1.5% 3% 3% 3%;
+}
+
+.section-main p {
+  color: #f4f4f4;
+  text-align: justify;
+}
+
+.section-soon {
+  grid-area: soon;
+  background-image: url("../img/red-black.jpg");
+  background-repeat: no-repeat;
+  color: #f4f4f4;
+}
+
+.section-soon h5 {
+    margin: 4% 4%;
+    font-size: 20px;
+}
+
+.section-soon ul {
+  margin: 0 0 5% 5%;
+}
+
+.section-done {
+  grid-area: done;
+  background: #030202;
+  color: #f4f4f4;
+  padding: 3% 0 0 0;
+  //border: 1px solid red;
+}
+
+.section-done h5 {
+    margin: 3% 4%;
+    font-size: 20px;
+}
+
+.section-done ul {
+  margin: 0 0 5% 5%;
+}
+
+/* Showcase - Plans
+_________________________________________________ */
+.plan {
+  grid-area: plan;
+  border-radius: 50%;
+  background-color: #9b0000;
+  color: #000;
+  font-family: "Permanent Marker";
+  align-self: center;
+  justify-self: center;
+  //border: 1px solid red;
+}
+
+.plan h4 {
+  font-size: 23.2px;
+  //margin: 0;
+  //padding: 0;
+}
+
+/* Group h5
+_________________________________________________ */
+.responsive h5,
+.time h5,
+.display h5,
+.proto h5 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  transition: 2s;
+}
+
+/* Group p
+_________________________________________________ */
+.responsive p,
+.time p,
+.display p,
+.proto p {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+
+/* Group Images
+_________________________________________________ */
+.responsive img,
+.time img,
+.display img,
+.proto img {
+  position: relative;
+  top: 55px;
+  animation: floatin2 3s ease-in;
+}
+
+@keyframes floatin2 {
+  0%{left: -230%;}
+  100%{left: 0;}
+}
+
+/* Plan options
+_________________________________________________ */
+.responsive {
+  grid-area: responsive;
+  color: #f4f4f4;
+  align-self: center;
+  justify-self: center;
+  //border: 1px solid red;
+  margin: 0  0 0 15%;
+}
+
+.time {
+  grid-area: time;
+  color: #f4f4f4;
+  align-self: center;
+  justify-self: center;
+  //border: 1px solid red;
+  margin-right: 15%;
+}
+
+.display {
+  grid-area: display;
+  color: #f4f4f4;
+  align-self: center;
+  justify-self: center;
+  //border: 1px solid red;
+  margin-left: 15%;
+}
+
+.proto {
+  grid-area: proto;
+  color: #f4f4f4;
+  align-self: center;
+  justify-self: center;
+  //border: 1px solid red;
+  margin-right: 15%;
+}
+
+/* Footer
+_________________________________________________ */
+.section-footer {
+  background-color: #9b0000;
+  padding: 0.5% 0;
+  font-family: "Permanent Marker", sans-serif;
+  text-align: center;
+  color: #000;
+}
+
+.section-foote p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Media Queries Tablet
+_________________________________________________ */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .grid {
+    grid-template-areas:
+    "main main main main main main main"
+    "soon soon soon soon soon soon soon "
+    "done done done done done done done"
+    "plan plan plan plan plan plan plan"
+    "responsive responsive responsive responsive responsive responsive responsive"
+    "time time time time time time time"
+    "display display display display display display display"
+    "proto proto proto proto proto proto proto";
+  }
+  .section-soon {
+    background-image: url("../img/red-black-medium.jpg");
+    background-repeat: no-repeat;
+  }
+  .plan h4 {
+    font-size: 22px;
+  }
+  .responsive,
+  .time,
+  .display,
+  .proto {
+    margin: 0 2%;
+  }
+  .responsive h5,
+  .time h5,
+  .display h5,
+  .proto h5 {
+    text-align: left;
+    font-size: 18px;
+    margin: 0 0 0 16%;
+    padding: 0;
+  }
+  .header-right ul {
+    right: -25%;
+  }
+}
+
+/* Media Queries Mobile
+_________________________________________________ */
+@media screen and (max-width: 480px) {
+  .container {
+    width: 85%;
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+  .header-left h1 {
+    font-size: 36px;
+  }
+  .header-left h5 {
+    font-size: 24px;
+  }
+  .header-right a {
+    font-size: 24px;
+  }
+  .header-right a:hover,
+  .header-right a:focus {
+    font-size: 28px;
+  }
+  .section-soon h5,
+  .section-done h5 {
+      font-size: 18px;
+  }
+  .section-soon {
+    background-image: url("../img/red-black-small.jpg");
+    background-repeat: no-repeat;
+  }
+  .grid {
+    grid-auto-rows: minmax(140px, auto);
+  }
+  .plan h4 {
+    font-size: 20px;
+  }
+  .responsive h5,
+  .time h5,
+  .display h5,
+  .proto h5 {
+    text-align: left;
+    font-size: 17px;
+    margin: 0 0 0 18.7%;
+    padding: 0;
+  }
+  .responsive img,
+  .time img,
+  .display img,
+  .proto img {
+    position: relative;
+    top: 45px;
+  }
+  .header-right ul {
+    right: -10%;
+  }
+  .header-right ul li {
+    margin: 6px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+  }
+
+}
